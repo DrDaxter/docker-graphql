@@ -37,6 +37,8 @@ jobs:
         docker build --tag draxtter/docker-graphql:$NEW_VERSION .
         docker build --tag draxtter/docker-graphql:latest .
     - name: Push docker image
+      env:
+         NEW_VERSION: ${{steps.version.outputs.version}}
       run: |
         docker push draxtter/docker-graphql:$NEW_VERSION
         docker push draxtter/docker-graphql:latest
